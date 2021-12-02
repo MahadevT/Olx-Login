@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+management:
+  endpoints:
+    web:
+      base-path: "/olx-login-monitor"
+      exposure:
+        include: "*"
+
+spring:
+  application:
+    name: login-service
+    
+  data:
+    mongodb:
+         host: localhost
+         port: 27017
+         database: authtokendb
+    
+ 
+  config:
+    import: configserver:http://localhost:9999
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    
+    
